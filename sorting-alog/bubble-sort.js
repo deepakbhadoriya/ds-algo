@@ -2,6 +2,8 @@ const array = [1, 25, 4, 6, 8, 19, 10, 3, 5];
 
 // ! Bubble Sort
 
+// ?  Best: O(N), Worst: O(N^2)
+
 // it sorts values by comparing the subsequent values and if the number following I
 // is lesser then it swaps them abd continues to do so for the entire array.
 // compare subsequent items in an array

@@ -2,6 +2,8 @@ const array = [1, 2, 4, 6, 8, 19, 10, 3, 5];
 
 // ! Quick Sort
 
+// ? Best/Average: O(N Log N), Worst: O(N^2)
+
 // Divide and Conquer - Usually done recursively
 // The way quicksort works, is by choosing a ​pivot​ (an element in the array, often random),
 // and check whether values in the array are higher or lower than that pivot.
