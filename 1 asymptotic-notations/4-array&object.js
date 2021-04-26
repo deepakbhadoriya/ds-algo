@@ -27,3 +27,14 @@
 // ? Removal    It depends... inFront O(n) inEnd O(1)
 // ? Searching  O(N)
 // ? Access     O(1)
+
+// ! Big O of Array Operations
+// ? push O(1)
+// ? pop O(1)
+// ? shift O(N)
+// ? unshift O(N)
+// ? concat O(N)
+// ? slice O(N)
+// ? splice O(N)
+// ? sort O(N*logN)
+// ? forEach/map/filter/reduce/etc-  O(N)
