@@ -37,7 +37,7 @@ It's the foundation for being a successful problem solving and developer.
 
 ## Explore Concrete Examples
 
-- Coming up with examples can help you understand teh problem better
+- Coming up with examples can help you understand the problem better
 - Examples also provide sanity checks that your eventually solution works how it should
   ex - User Stories, Unit Tests
 - Start with Simple Examples.
@@ -82,3 +82,8 @@ It's the foundation for being a successful problem solving and developer.
 - Greedy Algorithm
 - Backtracking
 - **Many More!**
+
+## Frequency Counter
+
+This pattern uses objects or sets to collect values/frequencies of value
+this can often avoid the need for nested loops or O(n<sup>2</sup>) operations with arrays/strings
