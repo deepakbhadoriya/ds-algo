@@ -5,142 +5,102 @@
 
 //// Example
 //? sumZero([-3, -2, -1, 0, 1, 2, 3) => [-3,3]
-//? sumZero([-2, 0, 1, 3) => [-3,3] // undefined
-//? sumZero([1, 2, 3) => [-3,3] // undefined
+//? sumZero([-2, 0, 1, 3) => undefined
+//? sumZero([1, 2, 3) =>  undefined
+
+const a = [-3, -2, -1, 0, 1, 2, 3];
+const b = [-2, 0, 1, 3];
+const c = [1, 2, 3];
 
 //* Naive solution
 //* 0(n^2) time complexity
-const sameNaive = (arr1, arr2) => {
-  if (arr1.length !== arr2.length) return false;
-
-  for (let i = 0; i < arr1.length; i++) {
-    let correctIndex = arr2.indexOf(arr1[i] ** 2);
-    if (correctIndex === -1) return false;
-    arr2.splice(correctIndex, 1);
+//* O(1) space complexity
+const naiveSumZero = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === 0) {
+        return [arr[i], arr[j]];
+      }
+    }
   }
-  return true;
 };
+
+// console.log(naiveSumZero(a));
+// console.log(naiveSumZero(b));
+// console.log(naiveSumZero(c));
 
 //* Better solution
 //* O(n) time complexity
-const sameRefactor = (arr1, arr2) => {
-  if (arr1.length !== arr2.length) return false;
+//* O(1) space complexity
+const refactorSumZero = (arr) => {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left < right) {
+    let sum = arr[left] + arr[right];
 
-  let freqCount1 = {};
-  let freqCount2 = {};
-  for (let val of arr1) {
-    freqCount1[val] = (freqCount1[val] || 0) + 1;
+    if (sum === 0) return [arr[left], arr[right]];
+    else if (sum > 0) right--;
+    else left++;
   }
-  for (let val of arr2) {
-    freqCount2[val] = (freqCount2[val] || 0) + 1;
-  }
-  for (let key in freqCount1) {
-    if (!(key ** 2 in freqCount2)) {
-      return false;
-    }
-    if (freqCount2[key ** 2] !== freqCount1[key]) {
-      return false;
-    }
-  }
-
-  return true;
 };
 
-const a = [
-  [1, 2, 2, 3],
-  [4, 1, 4, 9],
-];
-const b = [
-  [1, 2, 3],
-  [1, 9],
-];
-const c = [
-  [1, 2, 1],
-  [4, 4, 1],
-];
+// console.log(refactorSumZero(a));
+// console.log(refactorSumZero(b));
+// console.log(refactorSumZero(c));
 
-// console.log(sameRefactor(a[0], a[1]));
-// console.log(sameNaive(a[0], a[1]));
-
-// console.log(sameRefactor(b[0], b[1]));
-// console.log(sameNaive(b[0], b[1]));
-
-// console.log(sameRefactor(c[0], c[1]));
-// console.log(sameNaive(c[0], c[1]));
-
-// que ANAGRAMS --- Given two string, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, from iceman.
+// que ==> countUniqueValues - Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. there can be negative numbers in the array, but it will always be sorted.
 
 //// Example
-//? validAnagram("","") => true
-//? validAnagram("aaz","zza") => false
-//? validAnagram("anagram","nagaram") => true
-//? validAnagram("rat","car") => false
-//? validAnagram("awesome","awesom") => false
-//? validAnagram("qwerty","qeywrt") => true
-//? validAnagram("texttwisttime","timetwisttext") => true
+const a2 = [1, 1, 1, 1, 2];
+const b2 = [1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13];
+const c2 = [];
+const d2 = [-2, -1, -1, 0, 1];
+//? countUniqueValues([a2]) ==> 2
+//? countUniqueValues([b2]) ==> 7
+//? countUniqueValues([c2]) ==> 0
+//? countUniqueValues([d2]) ==> 4
 
-const validAnagram = (str1, str2) => {
-  if (str1.length !== str2.length) return false;
+//* Solution to just count number of unique number for sorted array
+//* O(n) time complexity
+//* O(1) space complexity
+const countUniqueValues = (arr) => {
+  let uniqueNum = 0;
 
-  let charFeq1 = {};
-  let charFeq2 = {};
-
-  for (let char of str1) {
-    charFeq1[char] = (charFeq1[char] || 0) + 1;
-  }
-  for (let char of str2) {
-    charFeq2[char] = (charFeq2[char] || 0) + 1;
-  }
-
-  for (let key in charFeq1) {
-    if (!(key in charFeq2)) {
-      return false;
-    }
-    if (charFeq1[key] !== charFeq2[key]) {
-      return false;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== arr[i + 1]) {
+      uniqueNum++;
     }
   }
-
-  // console.log(charFeq1);
-  // console.log(charFeq2);
-
-  return true;
+  return uniqueNum;
 };
 
-const validAnagramPro = (str1, str2) => {
-  if (str1.length !== str2.length) return false;
+// console.log(countUniqueValues(a2));
+// console.log(countUniqueValues(b2));
+// console.log(countUniqueValues(c2));
+// console.log(countUniqueValues(d2));
 
-  const lookUp = {};
+//* Solution to count number of unique number for sorted array and also remove duplicates
+//* O(n) time complexity
+//* O(1) space complexity
+const countUniqueValuesAndRemoveDuplicate = (arr) => {
+  if (arr.length === 0) return { unique: 0, arr: [] };
 
-  for (let i = 0; i < str1.length; i++) {
-    let letter = str1[i];
-    lookUp[letter] ? (lookUp[letter] += 1) : (lookUp[letter] = 1);
-  }
+  let unique = 0;
+  let withoutDuplicate = [];
 
-  for (let i = 0; i < str2.length; i++) {
-    let letter = str2[i];
-    if (!lookUp[letter]) {
-      return false;
-    } else {
-      lookUp[letter] -= 1;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== arr[i + 1]) {
+      unique++;
+      withoutDuplicate.push(arr[i]);
     }
   }
-
-  return true;
+  return {
+    unique,
+    withoutDuplicate,
+  };
 };
 
-// console.log(validAnagram('', ''));
-// console.log(validAnagram('aaz', 'zza'));
-// console.log(validAnagram('anagram', 'nagaram'));
-// console.log(validAnagram('rat', 'car'));
-// console.log(validAnagram('awesome', 'awesom'));
-// console.log(validAnagram('qwerty', 'qeywrt'));
-// console.log(validAnagram('texttwisttime', 'timetwisttext'));
-
-// console.log(validAnagram('', ''));
-// console.log(validAnagramPro('aaz', 'zza'));
-// console.log(validAnagramPro('anagram', 'nagaram'));
-// console.log(validAnagramPro('rat', 'car'));
-// console.log(validAnagramPro('awesome', 'awesom'));
-// console.log(validAnagramPro('qwerty', 'qeywrt'));
-// console.log(validAnagramPro('texttwisttime', 'timetwisttext'));
+console.log(countUniqueValuesAndRemoveDuplicate(a2));
+console.log(countUniqueValuesAndRemoveDuplicate(b2));
+console.log(countUniqueValuesAndRemoveDuplicate(c2));
+console.log(countUniqueValuesAndRemoveDuplicate(d2));
