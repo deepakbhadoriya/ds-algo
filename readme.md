@@ -4,6 +4,7 @@
 
 ````javascript
 "better-comments.tags": [
+
 			{
 				"tag": "!",
 				"color": "#FF2D00",
@@ -42,7 +43,7 @@
 			},
 			{
 				"tag": "*",
-				"color": "#98C379",
+				"color": "#FFFF00",
 				"strikethrough": false,
 				"underline": false,
 				"backgroundColor": "transparent",
