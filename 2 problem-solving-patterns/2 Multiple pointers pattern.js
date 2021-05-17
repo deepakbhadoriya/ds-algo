@@ -100,7 +100,7 @@ const countUniqueValuesAndRemoveDuplicate = (arr) => {
   };
 };
 
-console.log(countUniqueValuesAndRemoveDuplicate(a2));
-console.log(countUniqueValuesAndRemoveDuplicate(b2));
-console.log(countUniqueValuesAndRemoveDuplicate(c2));
-console.log(countUniqueValuesAndRemoveDuplicate(d2));
+// console.log(countUniqueValuesAndRemoveDuplicate(a2));
+// console.log(countUniqueValuesAndRemoveDuplicate(b2));
+// console.log(countUniqueValuesAndRemoveDuplicate(c2));
+// console.log(countUniqueValuesAndRemoveDuplicate(d2));
