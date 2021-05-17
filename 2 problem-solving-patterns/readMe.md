@@ -87,3 +87,9 @@ It's the foundation for being a successful problem solving and developer.
 
 This pattern uses objects or sets to collect values/frequencies of value
 this can often avoid the need for nested loops or O(n<sup>2</sup>) operations with arrays/strings
+
+## Multiple Pointers
+
+Creating pointers or values that correspond to an index or position and move towards the beginning, end or middle based on a certain condition.
+
+Very efficient for solving problems with minimal space complexity as well
